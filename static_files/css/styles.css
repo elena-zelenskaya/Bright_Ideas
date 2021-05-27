@@ -1,0 +1,73 @@
+.container {
+	/* background-color: azure; */
+	margin:20px auto;
+}
+
+.container h1 {
+	margin: 0 0 20px 0;
+}
+
+fieldset.form_decoration {
+	display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+	border-width: 2px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial;
+}
+
+.form_decoration legend {
+	padding: 0 10px;
+	width:fit-content;
+}
+
+.breadcrumbs {
+	font-size:20px;
+	font-weight:700;
+}
+
+.brand_name {
+	font-size:24px;
+	font-weight:700;
+}
+
+
+nav img {
+	margin: 0 5px;
+	height:60px;
+}
+
+.form-inline .form-group {
+	width:100%;
+}
+
+#idea {
+	width:92%;
+}
+
+.greeting {
+	font-size:22px;
+	font-weight:600;
+}
+
+.post_info {
+	width: 15%;
+}
+
+.delete_btn {
+	border-radius: 50%;
+	padding: 5px;
+}
+
+.idea_description {
+	width: 50%;
+	border: 1px lightslategrey solid;
+	padding: 10px;
+	margin: 5px 20px;
+}

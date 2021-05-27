@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login/Registration</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		/>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'all_styles/styles.css' %}" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Welcome!</h1>
+
+			<div class="row">
+				<div class="col col-md-6">
+					{% if messages %} {% for message in messages %} 
+					{%if "register" in message.tags %}
+					<ul class="messages">
+						<li class="{{ message.tags }}">{{ message }}</li>
+					</ul>
+					{% endif %} {% endfor %} {% endif %}
+					<form action="register/" method="POST">
+						{% csrf_token %}
+						<fieldset class="form_decoration">
+							<legend>Registration</legend>
+							<div class="form-group row">
+								<label
+									for="first_name"
+									class="col-md-4 col-form-label"
+									>First Name</label
+								>
+								<div class="col-md-8">
+									<input
+										id="first_name"
+										name="first_name"
+										type="text"
+										class="form-control"
+										value="{{request.session.first_name}}"
+									/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									for="last_name"
+									class="col-md-4 col-form-label"
+									>Last Name</label
+								>
+								<div class="col-md-8">
+									<input
+										id="last_name"
+										name="last_name"
+										type="text"
+										class="form-control"
+										value="{{request.session.last_name}}"
+									/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									for="alias"
+									class="col-md-4 col-form-label"
+									>Alias</label
+								>
+								<div class="col-md-8">
+									<input
+										id="alias"
+										name="alias"
+										type="text"
+										class="form-control"
+										value="{{request.session.alias}}"
+									/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									for="email"
+									class="col-md-4 col-form-label"
+									>Email</label
+								>
+								<div class="col-md-8">
+									<input
+										id="email"
+										name="email"
+										type="email"
+										class="form-control"
+										value="{{request.session.email}}"
+									/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									for="password"
+									class="col-md-4 col-form-label"
+									>Password</label
+								>
+								<div class="col-md-8">
+									<input
+										id="password"
+										name="password"
+										type="password"
+										class="form-control"
+										value=""
+									/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									for="confirm_password"
+									class="col-md-4 col-form-label"
+									>Confirm Password</label
+								>
+								<div class="col-md-8">
+									<input
+										id="confirm_password"
+										name="confirm_password"
+										type="password"
+										class="form-control"
+										value=""
+									/>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-md-12 text-right">
+									<button
+										type="submit"
+										class="btn btn-success"
+									>
+										Register
+									</button>
+								</div>
+							</div>
+							{% if messages %} 
+								{% for message in messages %} 
+									{%if "register" in message.tags %}
+										<ul class="messages">
+											<li class="{{ message.tags }}">{{ message }}</li>
+										</ul>
+									{% endif %} 
+								{% endfor %} 
+							{% endif %}
+						</fieldset>
+					</form>
+				</div>
+				<div class="col col-md-6">
+					
+					<form action="login/" method="POST">
+						{% csrf_token %}
+						<fieldset class="form_decoration">
+							<legend>Login</legend>
+							<div class="form-group row">
+								<label
+									for="email_login"
+									class="col-md-4 col-form-label"
+									>Email</label
+								>
+								<div class="col-md-8">
+									<input
+										id="email_login"
+										name="email_login"
+										type="email"
+										class="form-control"
+										value="{{request.session.email_login}}"
+									/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
+									for="password_login"
+									class="col-md-4 col-form-label"
+									>Password</label
+								>
+								<div class="col-md-8">
+									<input
+										id="password_login"
+										name="password_login"
+										type="password"
+										class="form-control"
+										value=""
+									/>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-md-12 text-right">
+									<button
+										type="submit"
+										class="btn btn-success"
+									>
+										Log In
+									</button>
+								</div>
+							</div>
+							{% if messages %} 
+								{% for message in messages %}
+									{%if "login" in message.tags %}
+										<ul class="messages">
+											<li class="{{ message.tags }}">{{ message }}</li>
+										</ul>
+									{% endif %} 
+								{% endfor %}
+							{% endif %}
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

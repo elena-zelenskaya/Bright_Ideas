@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
+    'ideas',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,3 +120,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, 'static_files/css'),
+    # "static_files/css",
+    ("all_styles", "static_files/css"),
+    ("all_images", "static_files/images"),
+    ("all_js", "static_files/scripts"),
+]
