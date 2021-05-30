@@ -15,15 +15,15 @@
 <body>
 	<div class="container">
 		<div class="row"><a class="breadcrumbs" href="/bright-ideas">Bright Ideas</a>
-		<a class="breadcrumbs" href="/logout">Logout</a></div>
+		<a class="breadcrumbs" href="/main/logout/">Logout</a></div>
 		<div class="row">
 			<p>Name: {{user.full_name}}</p>
 			<p>Alias: {{user.alias}}</p>
 			<p>Email: {{user.email}}</p>
 		</div>
 		<div class="row">
-			<p>Total Number of Posts:</p>
-			<p>Total Number of Likes:</p>
+			<p>Total Number of Ideas: {{user.user_ideas.count}}</p>
+			<p>Total Number of Likes: {{user.ideas.count}}</p>
 		</div>
 	</div>
 </body>

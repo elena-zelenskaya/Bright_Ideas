@@ -27,7 +27,7 @@
 				<span class="navbar-text greeting">
 					Hi, {{user.first_name}}!
 				</span>
-				<a class="breadcrumbs" href="/logout">Logout</a>
+				<a class="breadcrumbs" href="/main/logout">Logout</a>
 			</nav>
 			<form action="create-idea/" method="POST" class="form-inline mb-5">
 				{% csrf_token %}
@@ -49,15 +49,19 @@
 					</button>
 				</div>
 			</form>
-
+			{% if messages %} {% for message in messages %} 
+			{%if "no_more_likes" in message.tags %}
+			<p class="messages {{ message.tags }}">{{ message }}</p>
+			</p>
+			{% endif %} {% endfor %} {% endif %}
 			{% for idea in all_ideas %}
 					<div class="idea justify-content-start flex-row flex-nowrap d-flex">
-						<h5 class="post_info"><span class="author_info"><a href="../users/{{user.id}}">{{idea.user.alias}}</a> says:</span> 					
+						<h5 class="post_info"><span class="author_info"><a href="../users/{{idea.user.id}}/">{{idea.user.alias}}</a> says:</span> 					
 					</h5>
 						<p class="idea_description">{{idea.description}}</p>
 						{% if idea.user.id == user.id %}
 								<span class="delete_btn">
-									<form action="delete-idea/{{idea.id}}" method="POST">
+									<form action="delete-idea/{{idea.id}}/" method="POST">
 							{% csrf_token %}						
 							
 							<div class="form-group">
@@ -71,8 +75,8 @@
 						</form></span>
 						{% endif %}
 						<div class="likes">
-							<a href="">Like</a>
-							<a>people</a> like this.
+							<a href="likes/{{idea.id}}/">Like</a>
+							<a href="{{idea.id}}/">{{idea.users.count}} people</a> like this.
 							
 						</div>
 					</div>

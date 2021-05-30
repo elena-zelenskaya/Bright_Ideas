@@ -1,4 +1,5 @@
 from django.db import models
+from ideas.models import Idea
 import re
 
 class UserManager(models.Manager):
@@ -48,6 +49,7 @@ class User(models.Model):
     alias = models.CharField(max_length=20)
     email = models.CharField(max_length=45)
     password = models.CharField(max_length=100)
+    ideas = models.ManyToManyField(Idea, related_name = "users")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     @property

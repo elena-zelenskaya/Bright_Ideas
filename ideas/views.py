@@ -25,10 +25,26 @@ def create_idea(request):
         new_idea = Idea.objects.create(description = description, user = user)
         return redirect("../")
 
-def idea_view(request, idea_id):
-    pass
+def view_idea(request, idea_id):
+    context = {
+		"idea": Idea.objects.get(id = idea_id),
+	}
+    return render(request, 'view_idea.html', context)
 
 def delete_idea(request, idea_id):
     idea_to_delete = Idea.objects.get(id = idea_id)
     idea_to_delete.delete()
-    return redirect("../")
+    return redirect("../../")
+
+def create_like(request, idea_id):
+    user = User.objects.get(id = request.session['userid'])
+    idea_to_edit = Idea.objects.get(id = idea_id)
+    if idea_to_edit in user.ideas.all():
+        messages.error(request, "You already liked this idea", extra_tags='no_more_likes')
+        return redirect("../../")
+    else:
+        idea_to_edit.number_of_likes += 1
+        idea_to_edit.save()
+        user.ideas.add(idea_to_edit)
+        return redirect("../../")
+    
