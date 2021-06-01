@@ -5,12 +5,16 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Bright Ideas</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 		/>
+		<link 
+		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 		{% load static %}
 		<link rel="stylesheet" href="{% static 'all_styles/styles.css' %}" />
+		<script src="{% static 'all_js/js-scripts.js' %}"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -55,32 +59,41 @@
 			</p>
 			{% endif %} {% endfor %} {% endif %}
 			{% for idea in all_ideas %}
-					<div class="idea justify-content-start flex-row flex-nowrap d-flex">
-						<h5 class="post_info"><span class="author_info"><a href="../users/{{idea.user.id}}/">{{idea.user.alias}}</a> says:</span> 					
+			<div class="row idea">
+						<h5 class="post_info col col-md-2"><span class="author_info"><a href="../users/{{idea.user.id}}/">{{idea.user.alias}}</a> says:</span> 					
 					</h5>
-						<p class="idea_description">{{idea.description}}</p>
-						{% if idea.user.id == user.id %}
-								<span class="delete_btn">
+						<div class="idea_description col col-md-10"><p>{{idea.description}}</p>
+							{% if idea.user.id == user.id %}
+								<div class="del">
 									<form action="delete-idea/{{idea.id}}/" method="POST">
 							{% csrf_token %}						
 							
 							<div class="form-group">
 								
-									<button type="submit" class="btn btn-danger btn-sm">
-										X
+									<button type="submit" class="btn btn-danger delete_btn" title="Delete this idea">
+										<span class="sign">x</span>
 									</button>
 									
-								
-							</div>
-						</form></span>
-						{% endif %}
-						<div class="likes">
-							<a href="likes/{{idea.id}}/">Like</a>
-							<a href="{{idea.id}}/">{{idea.users.count}} people</a> like this.
+								</div>
 							
-						</div>
+						</form></div>
+						{% endif %}
 					</div>
+						
+						</div>
+			<div class="row likes mb-5">
+				<div class="col offset-2 col-md-2">
+					<a href="likes/{{idea.id}}/" class="heart"><i class="far fa-heart heart" id="heart-img"></i> Like</a>
+							</div>
+							<div class="col col-md-8">
+							<a href="{{idea.id}}/">{{idea.users.count}} people</a> like this
+							
+						</div></div>
+					
+						
+			
 					{% endfor %}
 		</div>
+
 	</body>
 </html>
