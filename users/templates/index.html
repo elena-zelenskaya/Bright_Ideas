@@ -22,6 +22,14 @@
 						{% csrf_token %}
 						<fieldset class="form_decoration">
 							<legend>Registration</legend>
+							{% if messages %} {% for message in messages %} 
+							{%if "register" in message.tags %}
+							<ul class="messages">
+								<li class="{{ message.tags }}">
+									{{ message }}
+								</li>
+							</ul>
+							{% endif %} {% endfor %} {% endif %}
 							<div class="form-group row">
 								<label
 									for="first_name"
@@ -129,14 +137,7 @@
 									</button>
 								</div>
 							</div>
-							{% if messages %} {% for message in messages %} 
-							{%if "register" in message.tags %}
-							<ul class="messages">
-								<li class="{{ message.tags }}">
-									{{ message }}
-								</li>
-							</ul>
-							{% endif %} {% endfor %} {% endif %}
+							
 						</fieldset>
 					</form>
 				</div>
@@ -145,6 +146,15 @@
 						{% csrf_token %}
 						<fieldset class="form_decoration">
 							<legend>Login</legend>
+							{% if messages %} {% for message in messages %}
+							
+							{%if "login" in message.tags %}
+							<ul class="messages">
+								<li class="{{ message.tags }}">
+									{{ message }}
+								</li>
+							</ul>
+							{% endif %} {% endfor %} {% endif %}
 							<div class="form-group row">
 								<label
 									for="email_login"
@@ -188,15 +198,7 @@
 									</button>
 								</div>
 							</div>
-							{% if messages %} {% for message in messages %}
 							
-							{%if "login" in message.tags %}
-							<ul class="messages">
-								<li class="{{ message.tags }}">
-									{{ message }}
-								</li>
-							</ul>
-							{% endif %} {% endfor %} {% endif %}
 						</fieldset>
 					</form>
 				</div>

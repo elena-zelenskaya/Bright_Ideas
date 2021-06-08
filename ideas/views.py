@@ -24,6 +24,7 @@ def create_idea(request):
         user = User.objects.get(id=user_id)
         new_idea = Idea.objects.create(description = description, user = user)
         return redirect("../")
+    return redirect("../")
 
 def view_idea(request, idea_id):
     context = {
@@ -47,4 +48,3 @@ def create_like(request, idea_id):
         idea_to_edit.save()
         user.ideas.add(idea_to_edit)
         return redirect("../../")
-    

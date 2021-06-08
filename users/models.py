@@ -1,6 +1,6 @@
 from django.db import models
 from ideas.models import Idea
-import re
+import re, bcrypt
 
 class UserManager(models.Manager):
     def register_validator(self, session_data, post_data, emails_list):
@@ -34,13 +34,12 @@ class UserManager(models.Manager):
             errors["password_confirmation"] = "Password confirmation doesn't match the password"
         return errors
 
-    def login_validator(self, session_data, post_data, emails_list):
-        errors = {}
-        if post_data["email_login"] not in emails_list:
-            errors["non_existing_email"] = "Unknown email"
-        else:
-            session_data["email_login"] = post_data["email_login"]
-        return errors
+    def authenticate(self, email, password):
+        users = self.filter(email=email)
+        if not users:
+            return False
+        user = users[0]
+        return bcrypt.checkpw(password.encode(), user.password.encode())
 
 # Create your models here.
 class User(models.Model):

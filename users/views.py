@@ -5,7 +5,6 @@ import bcrypt
 
 # Create your views here.
 def index(request):
-    # request.session.flush()
     return render(request, 'index.html')
 
 def home(request):
@@ -33,29 +32,21 @@ def register_user(request):
             pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
             new_user = User.objects.create(first_name = first_name, last_name = last_name, alias = alias, email = email, password = pw_hash)
             request.session['userid'] = new_user.id
-            request.session['fname'] = new_user.first_name
-            request.session['username'] = new_user.full_name
-            request.session['alias'] = new_user.alias
             return redirect("/bright-ideas/")
+    return redirect("/")
 
 def login_user(request):
     if request.method == "POST":
-        errors = User.objects.login_validator(request.session, request.POST, all_users_emails())
-        if len(errors) > 0:
-            for key, value in errors.items():
-                messages.error(request, value, extra_tags='login')
-            return redirect('/')
-        user = User.objects.get(email=request.POST['email_login'])
-
-        if bcrypt.checkpw(request.POST['password_login'].encode(), user.password.encode()):
-            request.session['userid'] = user.id
-            request.session['fname'] = user.first_name
-            request.session['username'] = user.full_name
-            request.session['alias'] = user.alias
-            return redirect('/bright-ideas/')
-        else:
-            messages.error(request, 'Wrong password', extra_tags='login')
+        email = request.POST["email_login"]
+        password = request.POST["password_login"]
+        if not User.objects.authenticate(email, password):
+            messages.error(request, "Email and Password do not match", extra_tags='login')
             return redirect("/")
+        else:
+            user = User.objects.get(email=email)
+            request.session["userid"] = user.id
+            return redirect('/bright-ideas/')
+    return redirect("/")
 
 def logout_user(request):
     request.session.flush()
