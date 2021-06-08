@@ -14,16 +14,17 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row"><a class="breadcrumbs" href="/bright-ideas">Bright Ideas</a>
+		<div class="row justify-content-end"><a class="breadcrumbs" href="/bright-ideas">Bright Ideas</a>
 		<a class="breadcrumbs" href="/main/logout/">Logout</a></div>
-		<div class="row">
-			<p>Name: {{user.full_name}}</p>
-			<p>Alias: {{user.alias}}</p>
-			<p>Email: {{user.email}}</p>
+		<h3>User Profile</h3>
+		<div class="user-info">
+			<p><span class="bold">Name:</span> {{user.full_name}}</p>
+			<p><span class="bold">Alias:</span> {{user.alias}}</p>
+			<p><span class="bold">Email:</span> {{user.email}}</p>
 		</div>
-		<div class="row">
-			<p>Total Number of Ideas: {{user.user_ideas.count}}</p>
-			<p>Total Number of Likes: {{user.ideas.count}}</p>
+		<div class="likes-info">
+			<p><span class="bold">Total Number of Ideas:</span> {{user.user_ideas.count}}</p>
+			<p><span class="bold">Total Number of Likes:</span> {{user.ideas.count}}</p>
 		</div>
 	</div>
 </body>

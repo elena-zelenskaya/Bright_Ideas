@@ -22,6 +22,19 @@ fieldset.form_decoration {
 	border-image: initial;
 }
 
+.bold {
+	font-weight: 600;
+	font-size: 20px;
+}
+
+.user-info {
+	font-size: 22px;
+}
+
+.likes-info {
+	border-top: 1px solid gray;
+}
+
 .form_decoration legend {
 	padding: 0 10px;
 	width: fit-content;
@@ -30,6 +43,122 @@ fieldset.form_decoration {
 .breadcrumbs {
 	font-size: 20px;
 	font-weight: 700;
+	margin:0 20px;
+}
+
+.brand_name {
+	font-size: 24px;
+	font-weight: 700;
+}
+
+nav img {
+	margin: 0 5px;
+	height: 60px;
+}
+
+.form-inline .form-group {
+	width: 100%;
+}
+
+#idea {
+	width: 92%;
+}
+
+.greeting {
+	font-size: 22px;
+	font-weight: 600;
+}
+
+.delete_btn {
+	border-radius: 50%;
+	border: 1px solid #dc3545;
+	background-color: #da959c;
+	font-size:18px;
+	font-weight: 800;
+	line-height:1;
+	color:#fff;
+}
+
+.sign {
+	vertical-align: text-top;
+}
+
+.idea_description {
+	border: 1px lightslategrey solid;
+	padding: 10px;
+	position:relative;
+}
+
+.del {
+	position: absolute;
+	top:-20px;
+	right:-20px;
+}
+
+.messages {
+	border: 1px solid #dc3545;
+	background-color: #da959c;
+	padding: 10px;
+	color: white;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.likes {
+	font-size:18px;
+}
+
+.fa-heart {
+	color: #dc3545;
+}
+.container {
+	/* background-color: azure; */
+	margin: 20px auto;
+}
+
+.container h1 {
+	margin: 0 0 20px 0;
+}
+
+fieldset.form_decoration {
+	display: block;
+	margin-inline-start: 2px;
+	margin-inline-end: 2px;
+	padding-block-start: 0.35em;
+	padding-inline-start: 0.75em;
+	padding-inline-end: 0.75em;
+	padding-block-end: 0.625em;
+	min-inline-size: min-content;
+	border-width: 2px;
+	border-style: groove;
+	border-color: threedface;
+	border-image: initial;
+}
+
+.bold {
+	font-weight: 600;
+	font-size: 20px;
+}
+
+.user-info {
+	font-size: 22px;
+}
+
+.likes-info {
+	border-top: 1px solid gray;
+	font-size: 26px;
+	padding-top: 20px;
+}
+
+.form_decoration legend {
+	padding: 0 10px;
+	width: fit-content;
+}
+
+.breadcrumbs {
+	font-size: 20px;
+	font-weight: 700;
+	margin:0 20px;
 }
 
 .brand_name {

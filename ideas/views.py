@@ -7,7 +7,7 @@ from users.models import User
 def all_ideas(request):
     if 'userid' in request.session.keys():
         context = {
-            'all_ideas': Idea.objects.all().order_by("-created_at"),
+            'all_ideas': Idea.objects.all().order_by("-number_of_likes"),
             'user': User.objects.get(id = request.session['userid'])
         }
         return render(request, 'ideas_wall.html', context)

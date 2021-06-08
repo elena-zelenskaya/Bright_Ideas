@@ -18,12 +18,6 @@
 
 			<div class="row">
 				<div class="col col-md-6">
-					{% if messages %} {% for message in messages %} 
-					{%if "register" in message.tags %}
-					<ul class="messages">
-						<li class="{{ message.tags }}">{{ message }}</li>
-					</ul>
-					{% endif %} {% endfor %} {% endif %}
 					<form action="register/" method="POST">
 						{% csrf_token %}
 						<fieldset class="form_decoration">
@@ -135,20 +129,18 @@
 									</button>
 								</div>
 							</div>
-							{% if messages %} 
-								{% for message in messages %} 
-									{%if "register" in message.tags %}
-										<ul class="messages">
-											<li class="{{ message.tags }}">{{ message }}</li>
-										</ul>
-									{% endif %} 
-								{% endfor %} 
-							{% endif %}
+							{% if messages %} {% for message in messages %} 
+							{%if "register" in message.tags %}
+							<ul class="messages">
+								<li class="{{ message.tags }}">
+									{{ message }}
+								</li>
+							</ul>
+							{% endif %} {% endfor %} {% endif %}
 						</fieldset>
 					</form>
 				</div>
 				<div class="col col-md-6">
-					
 					<form action="login/" method="POST">
 						{% csrf_token %}
 						<fieldset class="form_decoration">
@@ -196,15 +188,15 @@
 									</button>
 								</div>
 							</div>
-							{% if messages %} 
-								{% for message in messages %}
-									{%if "login" in message.tags %}
-										<ul class="messages">
-											<li class="{{ message.tags }}">{{ message }}</li>
-										</ul>
-									{% endif %} 
-								{% endfor %}
-							{% endif %}
+							{% if messages %} {% for message in messages %}
+							
+							{%if "login" in message.tags %}
+							<ul class="messages">
+								<li class="{{ message.tags }}">
+									{{ message }}
+								</li>
+							</ul>
+							{% endif %} {% endfor %} {% endif %}
 						</fieldset>
 					</form>
 				</div>
