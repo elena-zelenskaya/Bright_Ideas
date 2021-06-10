@@ -48,6 +48,7 @@ class User(models.Model):
     alias = models.CharField(max_length=20)
     email = models.CharField(max_length=45)
     password = models.CharField(max_length=100)
+    avatar = models.FileField(upload_to="avatars", default='avatars/default_avatar.jpg')
     ideas = models.ManyToManyField(Idea, related_name = "users")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -55,3 +56,5 @@ class User(models.Model):
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
     objects = UserManager()
+
+

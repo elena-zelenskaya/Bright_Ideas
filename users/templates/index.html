@@ -17,8 +17,8 @@
 			<h1>Welcome!</h1>
 
 			<div class="row">
-				<div class="col col-md-6">
-					<form action="register/" method="POST">
+				<div class="col col-md-6 col-sm-12">
+					<form action="register/" method="POST" enctype="multipart/form-data">
 						{% csrf_token %}
 						<fieldset class="form_decoration">
 							<legend>Registration</legend>
@@ -96,6 +96,20 @@
 							</div>
 							<div class="form-group row">
 								<label
+									for="avatar"
+									class="col-md-4 col-form-label"
+									>Add Profile Picture</label
+								>
+								<div class="col-md-8">
+									<input
+										id="avatar"
+										name="avatar"
+										type="file"
+									/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label
 									for="password"
 									class="col-md-4 col-form-label"
 									>Password</label
@@ -131,7 +145,7 @@
 								<div class="col-md-12 text-right">
 									<button
 										type="submit"
-										class="btn btn-success"
+										class="btn btn-primary"
 									>
 										Register
 									</button>
@@ -141,7 +155,7 @@
 						</fieldset>
 					</form>
 				</div>
-				<div class="col col-md-6">
+				<div class="col col-md-6 col-sm-12">
 					<form action="login/" method="POST">
 						{% csrf_token %}
 						<fieldset class="form_decoration">
@@ -192,7 +206,7 @@
 								<div class="col-md-12 text-right">
 									<button
 										type="submit"
-										class="btn btn-success"
+										class="btn btn-primary"
 									>
 										Log In
 									</button>

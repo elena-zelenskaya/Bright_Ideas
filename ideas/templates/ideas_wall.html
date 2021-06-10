@@ -33,6 +33,15 @@
 				</span>
 				<a class="breadcrumbs" href="/main/logout">Logout</a>
 			</nav>
+			{% if messages %} {% for message in messages %}
+							
+							{%if "empty_post" in message.tags %}
+							<ul class="messages">
+								<li class="{{ message.tags }}">
+									{{ message }}
+								</li>
+							</ul>
+							{% endif %} {% endfor %} {% endif %}
 			<form action="create-idea/" method="POST" class="form-inline mb-5">
 				{% csrf_token %}
 
@@ -60,9 +69,10 @@
 			{% endif %} {% endfor %} {% endif %}
 			{% for idea in all_ideas %}
 			<div class="row idea">
-						<h5 class="post_info col col-md-2"><span class="author_info"><a href="../users/{{idea.user.id}}/">{{idea.user.alias}}</a> says:</span> 					
-					</h5>
-						<div class="idea_description col col-md-10"><p>{{idea.description}}</p>
+				<div class="col col-md-1"><img class="avatar" src="{{idea.user.avatar.url}}" alt="profile picture"></div>
+						<div class="post_info col col-md-2"><a href="../users/{{idea.user.id}}/">{{idea.user.alias}}</a> says: 					
+						</div>
+						<div class="idea_description col col-md-9"><p>{{idea.description}}</p>
 							{% if idea.user.id == user.id %}
 								<div class="del">
 									<form action="delete-idea/{{idea.id}}/" method="POST">
@@ -82,13 +92,21 @@
 						
 						</div>
 			<div class="row likes mb-5">
-				<div class="col offset-2 col-md-2">
+				<div class="col offset-3 col-md-2">
 					<a href="likes/{{idea.id}}/" class="heart"><i class="far fa-heart heart" id="heart-img"></i> Like</a>
 							</div>
-							<div class="col col-md-8">
+							<div class="col col-md-4">
 							<a href="{{idea.id}}/">{{idea.users.count}} people</a> like this
 							
-						</div></div>
+						</div>
+						<!-- {% if idea.user.id == user.id %}
+							<div class="col col-md-4 text-right">
+							<a href="edit/{{idea.id}}/">Edit this idea</a>
+							
+						</div>
+						{% endif %} -->
+					
+					</div>
 					
 						
 			

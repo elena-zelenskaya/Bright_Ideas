@@ -17,9 +17,11 @@
 <div class="row justify-content-end"><a class="breadcrumbs" href="/bright-ideas">Bright Ideas</a>
 <a class="breadcrumbs" href="/main/logout/">Logout</a></div>
 	<div class="row idea mt-5">
-		<h5 class="post_info col col-md-2"><span class="author_info"><a href="../../users/{{idea.user.id}}/">{{idea.user.alias}}</a> says:</span> 					
-		</h5>
-			<div class="idea_description col col-md-10">
+		<div class="col col-md-1"><img class="avatar" src="{{idea.user.avatar.url}}" alt="profile picture"></div>
+						<div class="post_info col col-md-2"><a href="../users/{{idea.user.id}}/">{{idea.user.alias}}</a> says: 					
+						</div>
+		
+			<div class="idea_description col col-md-9">
 				<p>{{idea.description}}</p>
 					</div>
 				

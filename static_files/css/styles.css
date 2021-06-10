@@ -1,5 +1,4 @@
 .container {
-	/* background-color: azure; */
 	margin: 20px auto;
 }
 
@@ -81,6 +80,11 @@ nav img {
 
 .sign {
 	vertical-align: text-top;
+}
+
+.post_info {
+	font-weight:500;
+	font-size:20px;
 }
 
 .idea_description {
@@ -225,4 +229,18 @@ nav img {
 
 .fa-heart {
 	color: #dc3545;
+}
+
+.avatar.profile {
+	width:90px;
+	height:90px;
+	object-fit: cover;
+	float:left;
+	margin:15px;
+}
+
+.avatar {
+	width:70px;
+	height:70px;
+	object-fit: cover;
 }

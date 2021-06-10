@@ -5,9 +5,11 @@ import bcrypt
 
 # Create your views here.
 def index(request):
+    request.session.flush()
     return render(request, 'index.html')
 
 def home(request):
+    request.session.flush()
     return redirect("/main")
 
 def all_users_emails():
@@ -31,8 +33,13 @@ def register_user(request):
             password = request.POST["password"]
             pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
             new_user = User.objects.create(first_name = first_name, last_name = last_name, alias = alias, email = email, password = pw_hash)
+            if "avatar" in request.FILES:
+                avatar = request.FILES["avatar"]
+                new_user.avatar = avatar
+                new_user.save()
             request.session['userid'] = new_user.id
             return redirect("/bright-ideas/")
+    request.session.flush()
     return redirect("/")
 
 def login_user(request):
@@ -46,6 +53,7 @@ def login_user(request):
             user = User.objects.get(email=email)
             request.session["userid"] = user.id
             return redirect('/bright-ideas/')
+    request.session.flush()
     return redirect("/")
 
 def logout_user(request):

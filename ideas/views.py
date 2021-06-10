@@ -20,6 +20,9 @@ def create_idea(request):
         if len(description) == 0:
             messages.error(request, "Your message is empty!", extra_tags='empty_post')
             return redirect("../")
+        if len(description) < 10:
+            messages.error(request, "Your message is too short!", extra_tags='empty_post')
+            return redirect("../")
         user_id = request.session["userid"]
         user = User.objects.get(id=user_id)
         new_idea = Idea.objects.create(description = description, user = user)
@@ -35,6 +38,11 @@ def view_idea(request, idea_id):
 def delete_idea(request, idea_id):
     idea_to_delete = Idea.objects.get(id = idea_id)
     idea_to_delete.delete()
+    return redirect("../../")
+
+def edit_idea(request, idea_id):
+    idea_to_edit = Idea.objects.get(id = idea_id)
+    idea_to_edit.description
     return redirect("../../")
 
 def create_like(request, idea_id):
