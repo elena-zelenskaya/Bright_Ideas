@@ -6,6 +6,11 @@
 	margin: 0 0 20px 0;
 }
 
+.form-group.row label {
+	font-weight: 300;
+	font-size: 20px;
+}
+
 fieldset.form_decoration {
 	display: block;
 	margin-inline-start: 2px;
@@ -37,6 +42,7 @@ fieldset.form_decoration {
 .form_decoration legend {
 	padding: 0 10px;
 	width: fit-content;
+	font-size:28px;
 }
 
 .breadcrumbs {
