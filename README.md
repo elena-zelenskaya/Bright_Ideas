@@ -6,6 +6,6 @@ It is a simple message board which requires registration/login. It allows you to
 
 ### It's deployed [here](http://3.131.97.33/)
 
-Default account to log in
-* **Email:** iam@bright.com
-* **Password:** 12345678
+Default account to log in:
+* **Email** iam@bright.com
+* **Password** 12345678
