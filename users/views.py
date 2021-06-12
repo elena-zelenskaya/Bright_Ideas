@@ -5,11 +5,9 @@ import bcrypt
 
 # Create your views here.
 def index(request):
-    request.session.flush()
     return render(request, 'index.html')
 
 def home(request):
-    request.session.flush()
     return redirect("/main")
 
 def all_users_emails():

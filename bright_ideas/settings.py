@@ -118,11 +118,14 @@ USE_TZ = True
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static_files/images')
 MEDIA_URL = '/static_files/images/'
 
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'static/all_images')  #for deployment
+# MEDIA_URL = '/static/all_images/'  #for deployment
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, "static/")  #for deployment
 
 STATICFILES_DIRS = [
     # os.path.join(BASE_DIR, 'static_files/css'),
